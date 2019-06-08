@@ -11,7 +11,7 @@ class Sidenav extends Component {
     };
     M.Sidenav.init(this.Sidenav);
 
-    let instance = M.Sidenav.getInstance(this.Sidenav);
+    // let instance = M.Sidenav.getInstance(this.Sidenav);
     // instance.open();
     // console.log(instance.isOpen);
   }
