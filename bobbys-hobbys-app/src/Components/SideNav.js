@@ -1,20 +1,13 @@
-import React, { Component } from "react";
-import M from "materialize-css";
-import "materialize-css/dist/css/materialize.min.css";
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import M from 'materialize-css';
+import 'materialize-css/dist/css/materialize.min.css';
 
 class Sidenav extends Component {
   componentDidMount() {
-    const options = {
-      inDuration: 250,
-      outDuration: 200,
-      draggable: true
-    };
     M.Sidenav.init(this.Sidenav);
-
-    // let instance = M.Sidenav.getInstance(this.Sidenav);
-    // instance.open();
-    // console.log(instance.isOpen);
   }
+
   render() {
     return (
       <div>
@@ -22,22 +15,22 @@ class Sidenav extends Component {
           ref={Sidenav => {
             this.Sidenav = Sidenav;
           }}
-          id="slide-out"
-          className="sidenav"
+          id='slide-out'
+          className='sidenav'
         >
           <li>
-            <a className="waves-effect" href="#!">
+            <NavLink className='sidenav-close' to='/'>
               Inventory
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a className="waves-effect" href="#!">
+            <NavLink className='sidenav-close' to='/contact'>
               Contact Us
-            </a>
+            </NavLink>
           </li>
         </ul>
-        <a href="#!" data-target="slide-out" className="sidenav-trigger">
-          <i className="material-icons">menu</i>
+        <a href='#!' data-target='slide-out' className='sidenav-trigger'>
+          <i className='material-icons'>menu</i>
         </a>
       </div>
     );
