@@ -1,5 +1,5 @@
 import React from 'react';
-import HobbyMap from '../../Images/location.JPG';
+import HobbyMap from './HobbyMap';
 
 const Directions = () => {
   return (
@@ -20,7 +20,7 @@ const Directions = () => {
           </div>
           <div className='col s12 l6'>
             <div className='card-image'>
-              <img src={HobbyMap} alt='' />
+              <HobbyMap />
             </div>
           </div>
         </div>

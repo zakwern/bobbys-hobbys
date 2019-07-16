@@ -1,7 +1,8 @@
 import React from 'react';
 import Carousel from './Carousel';
 
-const CarDetails = props => {
+const CarDetails = (props) => {
+  const { car } = props;
   return (
     <div className='container'>
       <div className='row'>
@@ -21,7 +22,7 @@ const CarDetails = props => {
                 <tbody>
                   <tr>
                     <td>Price</td>
-                    {/* <td>${car.price}</td> */}
+                    <td>${car.price}</td>
                   </tr>
                   <tr>
                     <td>Mileage</td>
