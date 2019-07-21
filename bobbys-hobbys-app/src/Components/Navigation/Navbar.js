@@ -7,7 +7,8 @@ const Navbar = () => {
     <div>
       <nav className='nav-wrapper indigo accent-4'>
         <div className='container'>
-          <Link to='/' className='brand-logo'>
+          <Link to='/owner' className='brand-logo'>
+            {/* this link is temporary for testing */}
             Bobby's Hobbys
           </Link>
           <ul className='hide-on-large-only'>

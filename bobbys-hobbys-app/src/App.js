@@ -3,11 +3,12 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './Components/Navigation/Navbar';
 import CarList from './Components/Inventory/CarList';
 import CarDetail from './Components/Inventory/CarDetail';
-import Login from './Components/Auth/Login';
-import AddCar from './Components/Auth/AddCar';
-import RemoveCar from './Components/Auth/RemoveCar';
+import Login from './Components/Owner/Login';
+import AddCar from './Components/Owner/AddCar';
+import Owner from './Components/Owner/Owner';
 import Contact from './Components/Contact/Contact';
 import CarContextProvider from './Contexts/CarContext';
+import AuthContextProvider from './Contexts/AuthContext';
 
 function App() {
   return (
@@ -15,15 +16,16 @@ function App() {
       <div className='App'>
         <Navbar />
         <Switch>
-          <CarContextProvider>
-            <Route exact path='/' component={CarList} />
-          </CarContextProvider>
-          {/* <Route path='/car/1NMZJ7FW8mQHdqwOSSMd' component={CarDetail} /> */}
-
-          {/* <Route path='/signin' component={Login} />
-            <Route path='/addcar' component={AddCar} />
-            <Route path='/removecar' component={RemoveCar} /> */}
-          <Route path='/contact' component={Contact} />
+          <AuthContextProvider>
+            <Route path='/login' component={Login} />
+            <Route path='/contact' component={Contact} />
+            <CarContextProvider>
+              <Route exact path='/' component={CarList} />
+              <Route path={'/car/:id'} component={CarDetail} />
+              <Route path='/addcar' component={AddCar} />
+              <Route path='/owner' component={Owner} />
+            </CarContextProvider>
+          </AuthContextProvider>
         </Switch>
       </div>
     </BrowserRouter>

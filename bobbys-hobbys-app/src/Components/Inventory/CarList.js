@@ -32,20 +32,14 @@ import CarSummary from './CarSummary.js';
 const CarList = () => {
   const { cars } = useContext(CarContext);
   console.log(cars);
-  console.log('However the length of the cars array is', cars.length);
   return (
     <div className='container'>
       <h5>Inventory</h5>
       <div className='row'>
         <div className='col s12 xl6'>
-          {/* {cars.map(car => {
+          {cars.map(car => {
             return <CarSummary car={car} key={car.id} />;
-          })} */}
-          <div className='card'>
-            {cars.map(car => (
-              <div>{car.model}</div>
-            ))}
-          </div>
+          })}
         </div>
       </div>
     </div>

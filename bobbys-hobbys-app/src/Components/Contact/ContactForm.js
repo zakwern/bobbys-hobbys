@@ -1,8 +1,13 @@
 import React from 'react';
 
 const ContactForm = () => {
-  let textStyle = {
+  const textStyle = {
     textAlign: 'center'
+  };
+
+  const buttonStyle = {
+    float: 'right',
+    margin: '2%'
   };
 
   return (
@@ -16,15 +21,18 @@ const ContactForm = () => {
             Please fill out this form and we will get back to you as soon as
             possible
           </p>
+          <br />
           <div className='row'>
             <form className='col s12'>
-              <div className='input-field col s6'>
-                <input id='first_name' type='text' className='validate' />
-                <label for='first_name'>First Name</label>
-              </div>
-              <div className='input-field col s6'>
-                <input id='last_name' type='text' className='validate' />
-                <label for='last_name'>First Name</label>
+              <div className='row'>
+                <div className='input-field col s6'>
+                  <input id='first_name' type='text' className='validate' />
+                  <label for='first_name'>First Name</label>
+                </div>
+                <div className='input-field col s6'>
+                  <input id='last_name' type='text' className='validate' />
+                  <label for='last_name'>Last Name</label>
+                </div>
               </div>
               <div className='row'>
                 <div className='input-field col s12'>
@@ -37,6 +45,17 @@ const ContactForm = () => {
                   <textarea id='textarea1' className='materialize-textarea' />
                   <label for='textarea1'>Message</label>
                 </div>
+              </div>
+              <div className='row'>
+                <button
+                  className='btn waves-effect waves-light'
+                  type='submit'
+                  name='action'
+                  style={buttonStyle}
+                >
+                  Send
+                  <i class='material-icons right'>send</i>
+                </button>
               </div>
             </form>
           </div>

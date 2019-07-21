@@ -34,7 +34,7 @@ class Modal extends Component {
           className='waves-effect waves-light btn modal-trigger'
           data-target='modal1'
         >
-          Modal
+          Remove Car
         </a>
 
         <div
@@ -50,8 +50,8 @@ class Modal extends Component {
             </h4>
           </div>
           <div className='modal-footer'>
-            <a className='modal-close btn-flat'>Disagree</a>
-            <a className='modal-close btn-flat'>Agree</a>
+            <a className='modal-close btn red'>Disagree</a>
+            <a className='modal-close btn green'>Agree</a>
           </div>
         </div>
       </div>
