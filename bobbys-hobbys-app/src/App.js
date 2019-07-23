@@ -21,7 +21,7 @@ function App() {
             <Route path='/contact' component={Contact} />
             <CarContextProvider>
               <Route exact path='/' component={CarList} />
-              <Route path={'/car/:id'} component={CarDetail} />
+              <Route path={'/car/:carId'} component={CarDetail} />
               <Route path='/addcar' component={AddCar} />
               <Route path='/owner' component={Owner} />
             </CarContextProvider>

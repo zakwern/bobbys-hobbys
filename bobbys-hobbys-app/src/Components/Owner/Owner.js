@@ -24,7 +24,7 @@ const Owner = () => {
       <div className='row'>
         <div className='col s12 xl6'>
           {cars.map(car => {
-            return <OwnerSummary car={car} key={car.id} />;
+            return <OwnerSummary car={car} key={car.carId} />;
           })}
         </div>
       </div>

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import Carousel from './Carousel';
+import CarContextProvider, { CarContext } from '../../Contexts/CarContext';
 
-const CarDetails = (props) => {
-  const { car } = props;
+const CarDetails = props => {
+  const { cars } = useContext(CarContext);
+  // const [car, setCar] = useState('');
+  // cars ? setCar(cars[props.match.params.carId]) : null;
+  console.log(props.match.params.carId);
+  console.log(cars[1]);
   return (
     <div className='container'>
       <div className='row'>
@@ -22,35 +27,37 @@ const CarDetails = (props) => {
                 <tbody>
                   <tr>
                     <td>Price</td>
-                    <td>${car.price}</td>
+                    <td>${cars[0].price}</td>
                   </tr>
                   <tr>
                     <td>Mileage</td>
-                    <td>160,000 Miles</td>
+                    <td>{cars[0].mileage} Miles</td>
                   </tr>
                   <tr>
                     <td>Exterior</td>
-                    <td>Grey</td>
+                    <td>{cars[0].exterior}</td>
                   </tr>
                   <tr>
                     <td>Interior</td>
-                    <td>Black</td>
+                    <td>{cars[0].interior}</td>
                   </tr>
                   <tr>
                     <td>Trim</td>
-                    <td>Limited</td>
+                    <td>{cars[0].trim}</td>
                   </tr>
                   <tr>
                     <td>Engine</td>
-                    <td>3.0L V6</td>
+                    <td>{cars[0].engineSize}L V6</td>
                   </tr>
                   <tr>
                     <td>Transmission</td>
-                    <td>5-Speed Automatic</td>
+                    <td>{cars[0].transmission}</td>
                   </tr>
                   <tr>
                     <td>MPG</td>
-                    <td>20 city / 26 hwy</td>
+                    <td>
+                      {cars[0].city} city / {cars[0].hwy} hwy
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -61,16 +68,7 @@ const CarDetails = (props) => {
               <span className='card-title'>Dealer Notes</span>
               <div className='divider' />
               <br />
-              <p>
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more-or-less
-                normal distribution of letters, as opposed to using 'Content
-                here, content here', making it look like readable English. Many
-                desktop publishing packages and web page editors now use Lorem
-                Ipsum as their default model text, and a search for 'lorem
-                ipsum' will uncover
-              </p>
+              <p>{cars[0].notes}</p>
             </div>
           </div>
         </div>

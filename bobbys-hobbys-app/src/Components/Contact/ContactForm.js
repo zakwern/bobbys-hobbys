@@ -27,23 +27,23 @@ const ContactForm = () => {
               <div className='row'>
                 <div className='input-field col s6'>
                   <input id='first_name' type='text' className='validate' />
-                  <label for='first_name'>First Name</label>
+                  <label htmlFor='first_name'>First Name</label>
                 </div>
                 <div className='input-field col s6'>
                   <input id='last_name' type='text' className='validate' />
-                  <label for='last_name'>Last Name</label>
+                  <label htmlFor='last_name'>Last Name</label>
                 </div>
               </div>
               <div className='row'>
                 <div className='input-field col s12'>
                   <input id='email' type='email' className='validate' />
-                  <label for='email'>Email</label>
+                  <label htmlFor='email'>Email</label>
                 </div>
               </div>
               <div className='row'>
                 <div className='input-field col s12'>
                   <textarea id='textarea1' className='materialize-textarea' />
-                  <label for='textarea1'>Message</label>
+                  <label htmlFor='textarea1'>Message</label>
                 </div>
               </div>
               <div className='row'>
@@ -54,7 +54,7 @@ const ContactForm = () => {
                   style={buttonStyle}
                 >
                   Send
-                  <i class='material-icons right'>send</i>
+                  <i className='material-icons right'>send</i>
                 </button>
               </div>
             </form>

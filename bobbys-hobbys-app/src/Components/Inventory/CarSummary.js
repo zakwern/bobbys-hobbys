@@ -3,9 +3,10 @@ import Car1 from '../../Images/car1.jpg';
 import { Link } from 'react-router-dom';
 
 const CarSummary = ({ car }) => {
+  console.log(car);
   return (
     <div className='car-summary'>
-      <Link to={'/car/' + car.id} key={car.id}>
+      <Link to={'/car/' + car.carId} key={car.carId}>
         <div className='card'>
           <div className='card-image'>
             <img src={Car1} alt='' className='responsive-img' />

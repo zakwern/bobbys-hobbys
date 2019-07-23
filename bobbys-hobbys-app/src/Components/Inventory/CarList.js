@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import CarContextProvider, { CarContext } from '../../Contexts/CarContext.js';
-import { Link } from 'react-router-dom';
-import CarSummary from './CarSummary.js';
+import CarContextProvider, { CarContext } from '../../Contexts/CarContext';
+import CarSummary from './CarSummary';
 
 // const CarList = ({cars}) => {
 //  return (
@@ -38,7 +37,7 @@ const CarList = () => {
       <div className='row'>
         <div className='col s12 xl6'>
           {cars.map(car => {
-            return <CarSummary car={car} key={car.id} />;
+            return <CarSummary car={car} key={car.carId} />;
           })}
         </div>
       </div>

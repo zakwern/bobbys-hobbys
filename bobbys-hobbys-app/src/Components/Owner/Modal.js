@@ -30,12 +30,12 @@ class Modal extends Component {
   render() {
     return (
       <div>
-        <a
+        <button
           className='waves-effect waves-light btn modal-trigger'
           data-target='modal1'
         >
           Remove Car
-        </a>
+        </button>
 
         <div
           ref={Modal => {
@@ -50,8 +50,8 @@ class Modal extends Component {
             </h4>
           </div>
           <div className='modal-footer'>
-            <a className='modal-close btn red'>Disagree</a>
-            <a className='modal-close btn green'>Agree</a>
+            <button className='modal-close btn red'>Disagree</button>
+            <button className='modal-close btn green'>Agree</button>
           </div>
         </div>
       </div>

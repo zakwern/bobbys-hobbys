@@ -18,13 +18,30 @@ const CarContextProvider = props => {
     const db = firebase.firestore();
     db.collection('cars')
       .get()
-      .then(function(querySnapshot) {
-        querySnapshot.forEach(doc => {
-          cars.push(doc.data());
+      .then(data => {
+        let newCar = [];
+        data.forEach(doc => {
+          newCar.push({
+            carId: doc.id,
+            city: doc.data().city,
+            cylinder: doc.data().cylinder,
+            engineSize: doc.data().engineSize,
+            exterior: doc.data().exterior,
+            hwy: doc.data().hwy,
+            interior: doc.data().interior,
+            make: doc.data().make,
+            mileage: doc.data().mileage,
+            model: doc.data().model,
+            notes: doc.data().notes,
+            price: doc.data().price,
+            transmission: doc.data().transmission,
+            trim: doc.data().trim,
+            year: doc.data().year
+          });
+          setCars(newCar);
         });
-        setCars(cars);
       });
-  }, [cars]);
+  }, []);
 
   return (
     <CarContext.Provider value={{ cars, addCar, removeCar }}>
