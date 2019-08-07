@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import AuthContextProvider, { AuthContext } from '../../Contexts/AuthContext';
+import { Redirect } from 'react-router-dom';
 
-const Login = () => {
+const Login = props => {
   const textStyle = {
     textAlign: 'center'
   };
@@ -10,13 +12,22 @@ const Login = () => {
     margin: '2%'
   };
 
-  const handleChange = e => {
-    console.log(e);
-  };
+  const { user, login } = useContext(AuthContext);
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = e => {
-    console.log(e);
+    e.preventDefault();
+    login(username, password);
+    setUsername('');
+    setPassword('');
   };
+
+  // const { auth } = props;
+  // console.log(auth);
+
+  if (user == true) return <Redirect to='/owner' />;
 
   return (
     <div className='container'>
@@ -33,9 +44,10 @@ const Login = () => {
                     id='email'
                     type='email'
                     className='validate'
-                    onChange={handleChange}
+                    onChange={e => setUsername(e.target.value)}
+                    required
                   />
-                  <label for='email'>Email</label>
+                  <label htmlFor='email'>Email</label>
                 </div>
               </div>
               <div className='row'>
@@ -44,9 +56,10 @@ const Login = () => {
                     id='password'
                     type='password'
                     className='validate'
-                    onChange={handleChange}
+                    onChange={e => setPassword(e.target.value)}
+                    required
                   />
-                  <label for='password'>Password</label>
+                  <label htmlFor='password'>Password</label>
                 </div>
               </div>
               <div className='row'>

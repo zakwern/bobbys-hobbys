@@ -9,7 +9,11 @@ const CarSummary = ({ car }) => {
       <Link to={'/car/' + car.carId} key={car.carId}>
         <div className='card'>
           <div className='card-image'>
-            <img src={Car1} alt='' className='responsive-img' />
+            <img
+              src={car.profileUrl}
+              alt='Car Profile'
+              className='responsive-img'
+            />
           </div>
           <div className='card-content'>
             <span className='card-title'>

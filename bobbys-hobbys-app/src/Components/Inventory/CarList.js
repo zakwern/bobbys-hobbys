@@ -31,6 +31,9 @@ import CarSummary from './CarSummary';
 const CarList = () => {
   const { cars } = useContext(CarContext);
   console.log(cars);
+  // if (cars.length < 2) {
+  //   return <span>Inventory Loading ...</span>;
+  // }
   return (
     <div className='container'>
       <h5>Inventory</h5>

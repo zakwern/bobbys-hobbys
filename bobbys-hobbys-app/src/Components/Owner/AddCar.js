@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import CarContextProvider, { CarContext } from '../../Contexts/CarContext';
+import AuthContextProvider, {
+  AuthContext
+} from '../../Contexts/AuthContext.js';
+import { Redirect } from 'react-router-dom';
 
 const AddCar = () => {
-  let textStyle = {
+  const textStyle = {
     textAlign: 'center'
   };
 
@@ -9,6 +14,63 @@ const AddCar = () => {
     float: 'right',
     margin: '2%'
   };
+
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [city, setCity] = useState('');
+  const [cylinder, setCylinder] = useState('');
+  const [engineSize, setEngineSize] = useState('');
+  const [exterior, setExterior] = useState('');
+  const [hwy, setHwy] = useState('');
+  const [interior, setInterior] = useState('');
+  const [make, setMake] = useState('');
+  const [mileage, setMileage] = useState('');
+  const [model, setModel] = useState('');
+  const [notes, setNotes] = useState('');
+  const [price, setPrice] = useState('');
+  const [transmission, setTransmission] = useState('');
+  const [trim, setTrim] = useState('');
+  const [year, setYear] = useState('');
+
+  const { addCar } = useContext(CarContext);
+  const { user } = useContext(AuthContext);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    addCar(
+      selectedImage,
+      city,
+      cylinder,
+      engineSize,
+      exterior,
+      hwy,
+      interior,
+      make,
+      mileage,
+      model,
+      notes,
+      price,
+      transmission,
+      trim,
+      year
+    );
+    setSelectedImage(null);
+    setCity('');
+    setCylinder('');
+    setEngineSize('');
+    setExterior('');
+    setHwy('');
+    setInterior('');
+    setMake('');
+    setMileage('');
+    setModel('');
+    setNotes('');
+    setPrice('');
+    setTransmission('');
+    setTrim('');
+    setYear('');
+  };
+
+  if (user === false) return <Redirect to='/login' />;
 
   return (
     <div className='container'>
@@ -18,88 +80,179 @@ const AddCar = () => {
             Add a Car
           </span>
           <div className='row'>
-            <form className='col s12'>
+            <form className='col s12' onSubmit={handleSubmit}>
               <div className='row'>
-                <div className='file-field input-field'>
-                  <div className='btn'>
-                    <span>File</span>
-                    <input type='file' multiple />
+                <div className='col s12 xl6'>
+                  <div className='file-field input-field'>
+                    <div className='btn'>
+                      <span>File</span>
+                      <input
+                        type='file'
+                        onChange={e => setSelectedImage(e.target.files[0])}
+                        required
+                      />
+                    </div>
+                    <div className='file-path-wrapper'>
+                      <input
+                        className='file-path validate'
+                        type='text'
+                        placeholder='Upload Thumbnail'
+                      />
+                    </div>
                   </div>
-                  <div className='file-path-wrapper'>
-                    <input
-                      className='file-path validate'
-                      type='text'
-                      placeholder='Upload one or more files'
-                    />
+                </div>
+                <div className='col s12 xl6'>
+                  <div className='file-field input-field'>
+                    <div className='btn disabled'>
+                      <span>File</span>
+                      <input type='file' multiple />
+                    </div>
+                    <div className='file-path-wrapper'>
+                      <input
+                        className='file-path validate'
+                        type='text'
+                        placeholder='Upload Other Photos (Coming Soon!)'
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
               <div className='row'>
                 <div className='input-field col s12 l4'>
-                  <input id='year' type='text' />
-                  <label for='year'>Year</label>
+                  <input
+                    id='year'
+                    type='text'
+                    onChange={e => setYear(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='year'>Year</label>
                 </div>
                 <div className='input-field col s12 l4'>
-                  <input id='make' type='text' />
-                  <label for='make'>Make</label>
+                  <input
+                    id='make'
+                    type='text'
+                    onChange={e => setMake(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='make'>Make</label>
                 </div>
                 <div className='input-field col s12 l4'>
-                  <input id='model' type='text' />
-                  <label for='model'>Model</label>
+                  <input
+                    id='model'
+                    type='text'
+                    onChange={e => setModel(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='model'>Model</label>
                 </div>
               </div>
               <div className='row'>
                 <div className='input-field col s12 l6'>
-                  <input id='price' type='text' />
-                  <label for='price'>Price</label>
+                  <input
+                    id='price'
+                    type='text'
+                    onChange={e => setPrice(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='price'>Price</label>
                 </div>
                 <div className='input-field col s12 l6'>
-                  <input id='mileage' type='text' />
-                  <label for='mileage'>Mileage</label>
+                  <input
+                    id='mileage'
+                    type='text'
+                    onChange={e => setMileage(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='mileage'>Mileage</label>
                 </div>
               </div>
               <div className='row'>
                 <div className='input-field col s12 l6'>
-                  <input id='hwy' type='text' />
-                  <label for='hwy'>Highway MPG</label>
+                  <input
+                    id='hwy'
+                    type='text'
+                    onChange={e => setHwy(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='hwy'>Highway MPG</label>
                 </div>
                 <div className='input-field col s12 l6'>
-                  <input id='city' type='text' />
-                  <label for='city'>City MPG</label>
+                  <input
+                    id='city'
+                    type='text'
+                    onChange={e => setCity(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='city'>City MPG</label>
                 </div>
               </div>
               <div className='row'>
                 <div className='input-field col s12 l4'>
-                  <input id='engineType' type='text' />
-                  <label for='engineType'>Cylinder Arrangement</label>
+                  <input
+                    id='engineType'
+                    type='text'
+                    onChange={e => setCylinder(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='engineType'>Cylinder Arrangement</label>
                 </div>
                 <div className='input-field col s12 l4'>
-                  <input id='engineSize' type='text' />
-                  <label for='engineSize'>Engine Size</label>
+                  <input
+                    id='engineSize'
+                    type='text'
+                    onChange={e => setEngineSize(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='engineSize'>Engine Size</label>
                 </div>
                 <div className='input-field col s12 l4'>
-                  <input id='transmission' type='text' />
-                  <label for='transmission'>Transmission</label>
+                  <input
+                    id='transmission'
+                    type='text'
+                    onChange={e => setTransmission(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='transmission'>Transmission</label>
                 </div>
               </div>
               <div className='row'>
                 <div className='input-field col s12 l4'>
-                  <input id='interior' type='text' />
-                  <label for='interior'>Interior</label>
+                  <input
+                    id='interior'
+                    type='text'
+                    onChange={e => setInterior(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='interior'>Interior</label>
                 </div>
                 <div className='input-field col s12 l4'>
-                  <input id='exterior' type='text' />
-                  <label for='exterior'>Exterior</label>
+                  <input
+                    id='exterior'
+                    type='text'
+                    onChange={e => setExterior(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='exterior'>Exterior</label>
                 </div>
                 <div className='input-field col s12 l4'>
-                  <input id='trim' type='text' />
-                  <label for='trim'>Trim</label>
+                  <input
+                    id='trim'
+                    type='text'
+                    onChange={e => setTrim(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='trim'>Trim</label>
                 </div>
               </div>
               <div className='row'>
                 <div className='input-field col s12'>
-                  <textarea id='notes' className='materialize-textarea' />
-                  <label for='notes'>Dealer Notes</label>
+                  <textarea
+                    id='notes'
+                    className='materialize-textarea'
+                    onChange={e => setNotes(e.target.value)}
+                    required
+                  />
+                  <label htmlFor='notes'>Dealer Notes</label>
                 </div>
               </div>
               <div className='row'>
@@ -122,3 +275,5 @@ const AddCar = () => {
 };
 
 export default AddCar;
+
+// onChange={e => setProfileUrl(e.target.value)}

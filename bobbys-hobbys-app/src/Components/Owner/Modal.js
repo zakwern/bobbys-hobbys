@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import M from 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';
 
@@ -20,7 +20,7 @@ class Modal extends Component {
       inDuration: 250,
       outDuration: 250,
       opacity: 0.5,
-      dismissible: false,
+      dismissible: true,
       startingTop: '4%',
       endingTop: '10%'
     };
@@ -50,7 +50,6 @@ class Modal extends Component {
             </h4>
           </div>
           <div className='modal-footer'>
-            <button className='modal-close btn red'>Disagree</button>
             <button className='modal-close btn green'>Agree</button>
           </div>
         </div>
