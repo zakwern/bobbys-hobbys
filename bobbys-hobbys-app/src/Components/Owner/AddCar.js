@@ -16,11 +16,9 @@ const AddCar = () => {
   };
 
   const [selectedImage, setSelectedImage] = useState(null);
-  const [city, setCity] = useState('');
   const [cylinder, setCylinder] = useState('');
   const [engineSize, setEngineSize] = useState('');
   const [exterior, setExterior] = useState('');
-  const [hwy, setHwy] = useState('');
   const [interior, setInterior] = useState('');
   const [make, setMake] = useState('');
   const [mileage, setMileage] = useState('');
@@ -38,11 +36,9 @@ const AddCar = () => {
     e.preventDefault();
     addCar(
       selectedImage,
-      city,
       cylinder,
       engineSize,
       exterior,
-      hwy,
       interior,
       make,
       mileage,
@@ -53,21 +49,22 @@ const AddCar = () => {
       trim,
       year
     );
-    setSelectedImage(null);
-    setCity('');
-    setCylinder('');
-    setEngineSize('');
-    setExterior('');
-    setHwy('');
-    setInterior('');
-    setMake('');
-    setMileage('');
-    setModel('');
-    setNotes('');
-    setPrice('');
-    setTransmission('');
-    setTrim('');
-    setYear('');
+    // ).then(() => {
+    //   setSelectedImage(null);
+    //   setCylinder('');
+    //   setEngineSize('');
+    //   setExterior('');
+    //   setInterior('');
+    //   setMake('');
+    //   setMileage('');
+    //   setModel('');
+    //   setNotes('');
+    //   setPrice('');
+    //   setTransmission('');
+    //   setTrim('');
+    //   setYear('');
+    //   return <Redirect to='/owner' />;
+    // });
   };
 
   if (user === false) return <Redirect to='/login' />;
@@ -167,26 +164,6 @@ const AddCar = () => {
                 </div>
               </div>
               <div className='row'>
-                <div className='input-field col s12 l6'>
-                  <input
-                    id='hwy'
-                    type='text'
-                    onChange={e => setHwy(e.target.value)}
-                    required
-                  />
-                  <label htmlFor='hwy'>Highway MPG</label>
-                </div>
-                <div className='input-field col s12 l6'>
-                  <input
-                    id='city'
-                    type='text'
-                    onChange={e => setCity(e.target.value)}
-                    required
-                  />
-                  <label htmlFor='city'>City MPG</label>
-                </div>
-              </div>
-              <div className='row'>
                 <div className='input-field col s12 l4'>
                   <input
                     id='engineType'
@@ -275,5 +252,3 @@ const AddCar = () => {
 };
 
 export default AddCar;
-
-// onChange={e => setProfileUrl(e.target.value)}

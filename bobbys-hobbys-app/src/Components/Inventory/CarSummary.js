@@ -1,5 +1,4 @@
 import React from 'react';
-import Car1 from '../../Images/car1.jpg';
 import { Link } from 'react-router-dom';
 
 const CarSummary = ({ car }) => {

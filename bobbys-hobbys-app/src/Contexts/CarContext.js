@@ -5,16 +5,14 @@ export const CarContext = createContext();
 
 const CarContextProvider = props => {
   const [cars, setCars] = useState([]);
-  const [progress, setProgress] = useState(null);
-  const [profileUrl, setProfileUrl] = useState(null);
+  // const [profileUrl, setProfileUrl] = useState(null);
+  const [profileUrl, setProfileUrl] = useState('');
 
   const addCar = (
     selectedImage,
-    city,
     cylinder,
     engineSize,
     exterior,
-    hwy,
     interior,
     make,
     mileage,
@@ -25,55 +23,44 @@ const CarContextProvider = props => {
     trim,
     year
   ) => {
-    const uploadTask = firebase
+    firebase
       .storage()
       .ref(`images/${selectedImage.name}`)
-      .put(selectedImage);
-    uploadTask.on(
-      'state_changed',
-      snapshot => {
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgress({ progress });
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
-        // complete function ....
+      .put(selectedImage)
+      .then(() => {
         firebase
           .storage()
           .ref('images')
           .child(selectedImage.name)
           .getDownloadURL()
           .then(url => {
+            //unable to capture url string with setProfileUrl
             console.log(url);
+            console.log(typeof url);
             setProfileUrl(url);
+            console.log(profileUrl);
           });
-      }
-    );
-    setCars([
-      ...cars,
-      {
-        profileUrl,
-        city,
-        cylinder,
-        engineSize,
-        exterior,
-        hwy,
-        interior,
-        make,
-        mileage,
-        model,
-        notes,
-        price,
-        transmission,
-        trim,
-        year
-      }
-    ]);
-    // setProfileUrl('')
+      })
+      .then(() => {
+        firebase
+          .firestore()
+          .collection('cars')
+          .add({
+            profileUrl,
+            cylinder,
+            engineSize,
+            exterior,
+            interior,
+            make,
+            mileage,
+            model,
+            notes,
+            price,
+            transmission,
+            trim,
+            year
+          });
+      });
   };
 
   const removeCar = carId => {
@@ -81,32 +68,15 @@ const CarContextProvider = props => {
   };
 
   useEffect(() => {
-    const db = firebase.firestore();
-    db.collection('cars')
-      .get()
-      .then(data => {
-        let newCar = [];
-        data.forEach(doc => {
-          newCar.push({
-            profileUrl: doc.data().profileUrl,
-            carId: doc.id,
-            city: doc.data().city,
-            cylinder: doc.data().cylinder,
-            engineSize: doc.data().engineSize,
-            exterior: doc.data().exterior,
-            hwy: doc.data().hwy,
-            interior: doc.data().interior,
-            make: doc.data().make,
-            mileage: doc.data().mileage,
-            model: doc.data().model,
-            notes: doc.data().notes,
-            price: doc.data().price,
-            transmission: doc.data().transmission,
-            trim: doc.data().trim,
-            year: doc.data().year
-          });
-          setCars(newCar);
-        });
+    firebase
+      .firestore()
+      .collection('cars')
+      .onSnapshot(snapshot => {
+        const newCars = snapshot.docs.map(doc => ({
+          carId: doc.id,
+          ...doc.data()
+        }));
+        setCars(newCars);
       });
   }, []);
 

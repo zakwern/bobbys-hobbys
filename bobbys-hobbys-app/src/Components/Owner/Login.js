@@ -27,7 +27,7 @@ const Login = props => {
   // const { auth } = props;
   // console.log(auth);
 
-  if (user == true) return <Redirect to='/owner' />;
+  if (user === true) return <Redirect to='/owner' />;
 
   return (
     <div className='container'>

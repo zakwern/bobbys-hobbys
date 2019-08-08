@@ -57,12 +57,6 @@ const CarDetails = props => {
                     <td>Transmission</td>
                     <td>{car[0].transmission}</td>
                   </tr>
-                  <tr>
-                    <td>MPG</td>
-                    <td>
-                      {car[0].city} city / {car[0].hwy} hwy
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>

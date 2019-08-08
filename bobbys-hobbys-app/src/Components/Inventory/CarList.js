@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import CarContextProvider, { CarContext } from '../../Contexts/CarContext';
 import CarSummary from './CarSummary';
 
@@ -29,11 +29,10 @@ import CarSummary from './CarSummary';
 // }
 
 const CarList = () => {
+  // const [sortBy, setSortBy] = useState('MILEAGE_ASC');
   const { cars } = useContext(CarContext);
-  console.log(cars);
-  // if (cars.length < 2) {
-  //   return <span>Inventory Loading ...</span>;
-  // }
+  // const { cars } = getCars(sortBy);
+
   return (
     <div className='container'>
       <h5>Inventory</h5>
