@@ -1,6 +1,5 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 import firebase from '../Config/fbConfig';
-import { Redirect } from 'react-router-dom';
 
 export const AuthContext = createContext();
 

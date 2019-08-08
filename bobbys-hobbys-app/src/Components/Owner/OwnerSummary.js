@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Modal from './Modal';
+import CarContextProvider, { CarContext } from '../../Contexts/CarContext';
 
 const OwnerSummary = ({ car }) => {
+  const { removeCar } = useContext(CarContext);
+
+  const handleClick = e => {
+    e.preventDefault();
+    removeCar(car.carId, car.profileUrl);
+  };
+
   return (
     <div className='car-summary'>
       <div className='card'>
@@ -17,7 +25,13 @@ const OwnerSummary = ({ car }) => {
             {car.year} {car.make} {car.model}
           </span>
           <h3>${car.price}</h3>
-          <Modal />
+          {/* <Modal /> */}
+          <button
+            className='waves-effect waves-light btn'
+            onClick={handleClick}
+          >
+            Remove car
+          </button>
         </div>
       </div>
     </div>

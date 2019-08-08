@@ -5,7 +5,7 @@ import AuthContextProvider, {
 } from '../../Contexts/AuthContext.js';
 import { Redirect } from 'react-router-dom';
 
-const AddCar = () => {
+const AddCar = props => {
   const textStyle = {
     textAlign: 'center'
   };
@@ -49,22 +49,7 @@ const AddCar = () => {
       trim,
       year
     );
-    // ).then(() => {
-    //   setSelectedImage(null);
-    //   setCylinder('');
-    //   setEngineSize('');
-    //   setExterior('');
-    //   setInterior('');
-    //   setMake('');
-    //   setMileage('');
-    //   setModel('');
-    //   setNotes('');
-    //   setPrice('');
-    //   setTransmission('');
-    //   setTrim('');
-    //   setYear('');
-    //   return <Redirect to='/owner' />;
-    // });
+    props.history.push('/owner');
   };
 
   if (user === false) return <Redirect to='/login' />;

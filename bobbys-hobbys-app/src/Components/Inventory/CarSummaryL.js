@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CarSummary = ({ car }) => {
+const CarSummaryL = ({ car }) => {
   return (
     <div className='car-summary'>
       <Link to={'/car/' + car.carId} key={car.carId}>
-        <div className='card'>
+        <div className='card horizontal'>
           <div className='card-image'>
             <img
               src={car.profileUrl}
@@ -25,4 +25,4 @@ const CarSummary = ({ car }) => {
   );
 };
 
-export default CarSummary;
+export default CarSummaryL;

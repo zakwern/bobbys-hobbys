@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import CarContextProvider, { CarContext } from '../../Contexts/CarContext';
 import CarSummary from './CarSummary';
+import CarSummaryL from './CarSummaryL.js';
 
 // const CarList = ({cars}) => {
 //  return (
@@ -29,17 +30,22 @@ import CarSummary from './CarSummary';
 // }
 
 const CarList = () => {
-  // const [sortBy, setSortBy] = useState('MILEAGE_ASC');
   const { cars } = useContext(CarContext);
-  // const { cars } = getCars(sortBy);
 
   return (
     <div className='container'>
       <h5>Inventory</h5>
-      <div className='row'>
-        <div className='col s12 xl6'>
+      <div className='row hide-on-med-and-up'>
+        <div className='col s12'>
           {cars.map(car => {
             return <CarSummary car={car} key={car.carId} />;
+          })}
+        </div>
+      </div>
+      <div className='row hide-on-small-only'>
+        <div className='col m12'>
+          {cars.map(car => {
+            return <CarSummaryL car={car} key={car.carId} />;
           })}
         </div>
       </div>

@@ -4,7 +4,10 @@ import firebase from '../Config/fbConfig';
 export const CarContext = createContext();
 
 const CarContextProvider = props => {
+  // Get cars array state
   const [cars, setCars] = useState([]);
+
+  // Various Add car state parameters
   const [profileUrl, setProfileUrl] = useState('');
   const [cylinder, setCylinder] = useState('');
   const [engineSize, setEngineSize] = useState('');
@@ -19,6 +22,7 @@ const CarContextProvider = props => {
   const [trim, setTrim] = useState('');
   const [year, setYear] = useState('');
 
+  // uploads selectedImage to Firebase Storage and updates state
   const addCar = (
     selectedImage,
     cylinder,
@@ -34,7 +38,6 @@ const CarContextProvider = props => {
     trim,
     year
   ) => {
-    // uploads selectedImage to firebase Storage
     setCylinder(cylinder);
     setEngineSize(engineSize);
     setExterior(exterior);
@@ -52,7 +55,6 @@ const CarContextProvider = props => {
       .ref(`images/${selectedImage.name}`)
       .put(selectedImage)
       .then(() => {
-        // sets the url of the uploaded image to profileUrl
         firebase
           .storage()
           .ref('images')
@@ -64,10 +66,19 @@ const CarContextProvider = props => {
       });
   };
 
-  const removeCar = carId => {
-    setCars(cars.filter(car => car.carId !== carId));
+  const removeCar = (carId, url) => {
+    console.log(carId, url);
+    let image = firebase.storage().refFromURL(url);
+    image.delete().then(
+      firebase
+        .firestore()
+        .collection('cars')
+        .doc(carId)
+        .delete()
+    );
   };
 
+  // Grabs car list
   useEffect(() => {
     firebase
       .firestore()
@@ -81,6 +92,7 @@ const CarContextProvider = props => {
       });
   }, []);
 
+  // Uploads car object when profileUrl changes and is not ''
   useEffect(() => {
     if (profileUrl !== '')
       firebase
@@ -102,7 +114,6 @@ const CarContextProvider = props => {
           year
         });
     setProfileUrl('');
-    console.log('Car Added');
   }, [profileUrl]);
 
   return (

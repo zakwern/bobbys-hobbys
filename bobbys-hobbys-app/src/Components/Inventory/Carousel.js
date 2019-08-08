@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import M from 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';
-import Car1 from '../../Images/car1.jpg';
-import Car2 from '../../Images/car2.jpg';
 
 class Carousel extends Component {
   componentDidMount() {
@@ -23,19 +21,49 @@ class Carousel extends Component {
         className='carousel carousel-slider'
       >
         <a className='carousel-item' href='#one!'>
-          <img src={Car1} alt='' className='responsive-img' />
+          <img
+            src={
+              'https://firebasestorage.googleapis.com/v0/b/bobbys-hobbys.appspot.com/o/car1.jpg?alt=media&token=1a73af96-4e99-4362-9034-2481ddf31290'
+            }
+            alt=''
+            className='responsive-img'
+          />
         </a>
         <a className='carousel-item' href='#two!'>
-          <img src={Car2} alt='' className='responsive-img' />
+          <img
+            src={
+              'https://firebasestorage.googleapis.com/v0/b/bobbys-hobbys.appspot.com/o/car1.jpg?alt=media&token=1a73af96-4e99-4362-9034-2481ddf31290'
+            }
+            alt=''
+            className='responsive-img'
+          />
         </a>
         <a className='carousel-item' href='#three!'>
-          <img src={Car1} alt='' className='responsive-img' />
+          <img
+            src={
+              'https://firebasestorage.googleapis.com/v0/b/bobbys-hobbys.appspot.com/o/car1.jpg?alt=media&token=1a73af96-4e99-4362-9034-2481ddf31290'
+            }
+            alt=''
+            className='responsive-img'
+          />
         </a>
         <a className='carousel-item' href='#four!'>
-          <img src={Car2} alt='' className='responsive-img' />
+          <img
+            src={
+              'https://firebasestorage.googleapis.com/v0/b/bobbys-hobbys.appspot.com/o/car1.jpg?alt=media&token=1a73af96-4e99-4362-9034-2481ddf31290'
+            }
+            alt=''
+            className='responsive-img'
+          />
         </a>
         <a className='carousel-item' href='#five!'>
-          <img src={Car1} alt='' className='responsive-img' />
+          <img
+            src={
+              'https://firebasestorage.googleapis.com/v0/b/bobbys-hobbys.appspot.com/o/car1.jpg?alt=media&token=1a73af96-4e99-4362-9034-2481ddf31290'
+            }
+            alt=''
+            className='responsive-img'
+          />
         </a>
       </div>
     );

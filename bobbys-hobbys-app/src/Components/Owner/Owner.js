@@ -4,7 +4,6 @@ import AuthContextProvider, {
   AuthContext
 } from '../../Contexts/AuthContext.js';
 import { Link } from 'react-router-dom';
-import Modal from './Modal';
 import OwnerSummary from './OwnerSummary.js';
 import { Redirect } from 'react-router-dom';
 
