@@ -51,7 +51,9 @@ const CarDetails = props => {
                   </tr>
                   <tr>
                     <td>Engine</td>
-                    <td>{car[0].engineSize}L V6</td>
+                    <td>
+                      {car[0].engineSize}L {car[0].cylinder}
+                    </td>
                   </tr>
                   <tr>
                     <td>Transmission</td>
