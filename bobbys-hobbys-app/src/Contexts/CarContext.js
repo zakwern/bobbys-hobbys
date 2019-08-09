@@ -66,6 +66,30 @@ const CarContextProvider = props => {
       });
   };
 
+  // Uploads car object when profileUrl changes and is not ''
+  useEffect(() => {
+    if (profileUrl !== '')
+      firebase
+        .firestore()
+        .collection('cars')
+        .add({
+          profileUrl,
+          cylinder,
+          engineSize,
+          exterior,
+          interior,
+          make,
+          mileage,
+          model,
+          notes,
+          price,
+          transmission,
+          trim,
+          year
+        });
+    setProfileUrl('');
+  }, [profileUrl]);
+
   const removeCar = (carId, url) => {
     console.log(carId, url);
     let image = firebase.storage().refFromURL(url);
@@ -91,30 +115,6 @@ const CarContextProvider = props => {
         setCars(newCars);
       });
   }, []);
-
-  // Uploads car object when profileUrl changes and is not ''
-  useEffect(() => {
-    if (profileUrl !== '')
-      firebase
-        .firestore()
-        .collection('cars')
-        .add({
-          profileUrl,
-          cylinder,
-          engineSize,
-          exterior,
-          interior,
-          make,
-          mileage,
-          model,
-          notes,
-          price,
-          transmission,
-          trim,
-          year
-        });
-    setProfileUrl('');
-  }, [profileUrl]);
 
   return (
     <CarContext.Provider value={{ cars, addCar, removeCar }}>

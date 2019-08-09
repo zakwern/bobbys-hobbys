@@ -5,6 +5,7 @@ import CarContextProvider, { CarContext } from '../../Contexts/CarContext';
 const CarDetails = props => {
   const { cars } = useContext(CarContext);
   const car = cars.filter(car => car.carId === props.match.params.carId);
+
   return (
     <div className='container'>
       <div className='row'>
@@ -17,6 +18,13 @@ const CarDetails = props => {
                 alt='Car Profile'
                 className='responsive-img'
               />
+            </div>
+          </div>
+          <div className='card'>
+            <div className='card-content'>
+              <p>
+                To inquire about this car please contact Bob at (845) 475-5275
+              </p>
             </div>
           </div>
         </div>

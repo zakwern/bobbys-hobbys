@@ -24,9 +24,6 @@ const Login = props => {
     setPassword('');
   };
 
-  // const { auth } = props;
-  // console.log(auth);
-
   if (user === true) return <Redirect to='/owner' />;
 
   return (
